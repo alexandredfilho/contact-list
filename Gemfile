@@ -5,7 +5,7 @@ ruby '3.0.2'
 
 gem 'devise'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
-gem 'sqlite3', '~> 1.4'
+gem 'pg', '~> 1.2', '>= 1.2.3', group: :production
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'bootstrap-sass'
@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
