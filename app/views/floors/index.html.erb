@@ -1,0 +1,34 @@
+<div class="row mb-3">
+  <div class="col sm-8">
+    <h5>Floors</h5>
+  </div>
+  <% if user_signed_in? %>
+    <div class="col sm-8">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= link_to 'New Floor', new_floor_path, class:"btn btn-primary text-white me-md-2 rounded-pill border border-light" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-secondary">
+    <tr>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @floors.each do |floor| %>
+      <tr>
+        <td><%= floor.description %></td>
+        <td><%= link_to 'Show', floor, class:"text-primary" %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_floor_path(floor), class:"text-primary" %></td>
+          <td><%= link_to 'Destroy', floor, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

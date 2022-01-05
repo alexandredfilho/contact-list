@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row mb-3">
+      <div class="col sm-8">
+        <h1><%= @employee.first_name %> <%= @employee.last_name %></h1>
+      </div>
+      <div class="col sm-8">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_employee_path(@employee),class:"btn btn-success text-white me-md-2" %>
+          <% end %>
+          <%= link_to 'Go Back', employees_path, class:"btn btn-outline-primary text-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Contact Info</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text mb-1"><strong>Email Address: </strong><%= mail_to @employee.email %></p>
+            <p class="card-text mb-1"><strong>Phone Extension: </strong><%= tel_to @employee.phone %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Locale info</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text mb-1"><strong>Company: </strong><%= @employee.company %></p>
+            <p class="card-text mb-1"><strong>Department: </strong><%= @employee.department.description %></p>
+            <p class="card-text mb-1"><strong>Floor: </strong><%= @employee.department.floor.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

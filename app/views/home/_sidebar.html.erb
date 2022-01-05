@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading border-bottom bg-light">Contact List v1</div>
+      <div class="list-group list-group-flush">
+        <%= link_to floors_path, class:"list-group-item list-group-item-action list-group-item-light p-3" do %>
+          <i class="far fa-building"></i>
+          Floors
+        <% end %>
+        <%= link_to departments_path, class:"list-group-item list-group-item-action list-group-item-light p-3" do %>
+          <i class="fas fa-cube"></i>
+          Departments
+        <% end %>
+        <%= link_to employees_path, class:"list-group-item list-group-item-action list-group-item-light p-3" do %>
+          <i class="far fa-id-badge"></i>
+          Employees
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

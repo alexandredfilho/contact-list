@@ -1,0 +1,56 @@
+<%= form_with(model: employee) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3">
+    <div class="col sm-8">
+      <h5>New Employee</h5>
+    </div>
+    <div class="col sm-8">
+      <div class="actions">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <%= form.submit class:"btn btn-success text-white me-md-2" %>
+          <%= link_to 'Go Back', employees_path, class:"btn btn-outline-primary text-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :first_name, class:"form-control", id:"floatingInputFirsName", placeholder:"John" %>
+    <%= form.label :first_name, for:"floatingInputFirsName" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :last_name, class:"form-control", id:"floatingInputLastName", placeholder:"Doe" %>
+    <%= form.label :last_name, for:"floatingInputLastName" %>
+  </div>
+
+    <div class="form-floating mb-3">
+    <%= form.text_field :company, class:"form-control", id:"floatingInputCompany", placeholder:"Ups" %>
+    <%= form.label :company, for:"floatingInputCompany" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :email, class:"form-control", id:"floatingInputEmail", placeholder:"johndoe@email.com" %>
+    <%= form.label :email, for:"floatingInputEmail" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :phone, class:"form-control", id:"floatingInputPhone", placeholder:"00000-0000" %>
+    <%= form.label :phone, for:"floatingInputPhone" %>
+  </div>
+
+  <div class="field">
+    <%= form.select :department_id, options_for_select(Department.order(:description).pluck(:description, :id)), {}, {class: "form-select "} %>
+  </div>
+<% end %>

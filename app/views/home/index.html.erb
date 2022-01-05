@@ -1,0 +1,39 @@
+<div class="row mb-3">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <span class="position-relative">
+          <h5 class="card-title">Floors</h5>
+            <%= link_to @floors.length, floors_path, class:"position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white text-decoration-none" %>
+        </span>
+        <%= link_to 'See All', floors_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <span class="position-relative">
+          <h5 class="card-title">Departments</h5>
+            <%= link_to @departments.length, departments_path, class:"position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white text-decoration-none"  %>
+        </span>
+        <%= link_to 'See All', departments_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <span class="position-relative">
+          <h5 class="card-title">Employees</h5>
+            <%= link_to @employees.length, employees_path, class:"position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white text-decoration-none" %>
+          </span>
+          <%= link_to 'See All', employees_path %>
+      </div>
+    </div>
+  </div>
+</div>
