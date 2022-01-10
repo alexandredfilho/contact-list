@@ -20,6 +20,17 @@
     </div>
   </div>
 
+  <div class="mb-3">
+    <% if employee.photo.attached? %>
+      <%= image_tag employee.thumbnail %>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :photo, for:"formFile", class:"form-label", placeholder:"Profile Photo" %>
+    <%= form.file_field :photo, class:"form-control", id:"formFile" %>
+  </div>
+
   <div class="form-floating mb-3">
     <%= form.text_field :first_name, class:"form-control", id:"floatingInputFirsName", placeholder:"John" %>
     <%= form.label :first_name, for:"floatingInputFirsName" %>
