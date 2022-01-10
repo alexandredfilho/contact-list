@@ -3,12 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'devise'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 gem 'pg', '~> 1.2', '>= 1.2.3', group: :production
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'bootstrap-sass'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
