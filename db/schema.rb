@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_005009) do
+ActiveRecord::Schema.define(version: 2022_01_13_021734) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_01_07_005009) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "department_id", null: false
+    t.integer "roles"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
@@ -64,13 +65,6 @@ ActiveRecord::Schema.define(version: 2022_01_07_005009) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,5 +83,4 @@ ActiveRecord::Schema.define(version: 2022_01_07_005009) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "departments", "floors"
   add_foreign_key "employees", "departments"
-  add_foreign_key "photos", "users"
 end
