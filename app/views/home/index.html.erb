@@ -1,39 +1,53 @@
-<div class="row mb-3">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <span class="position-relative">
-          <h5 class="card-title">Floors</h5>
-            <%= link_to @floors.length, floors_path, class:"position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white text-decoration-none" %>
-        </span>
-        <%= link_to 'See All', floors_path %>
+<h5 class="mb-2 mt-4">Dashboard</h5>
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3><%= @floors.length%></h3>
+
+        <p>Floors</p>
       </div>
+      <div class="icon">
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+      <%= link_to floors_path, class:"small-box-footer" do %>
+          See All <i class="fas fa-arrow-circle-right"></i>
+      <% end %>
     </div>
   </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3><%= @departments.length %></h3>
 
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <span class="position-relative">
-          <h5 class="card-title">Departments</h5>
-            <%= link_to @departments.length, departments_path, class:"position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white text-decoration-none"  %>
-        </span>
-        <%= link_to 'See All', departments_path %>
+        <p>Departments</p>
       </div>
+      <div class="icon">
+        <i class="fas fa-th"></i>
+      </div>
+      <%= link_to departments_path, class:"small-box-footer" do %>
+          See All <i class="fas fa-arrow-circle-right"></i>
+      <% end %>
     </div>
   </div>
-</div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3><%= @employees.length %></h3>
 
-<div class="row mb-3">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <span class="position-relative">
-          <h5 class="card-title">Employees</h5>
-            <%= link_to @employees.length, employees_path, class:"position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white text-decoration-none" %>
-          </span>
-          <%= link_to 'See All', employees_path %>
+        <p>Employees</p>
       </div>
+      <div class="icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <%= link_to employees_path, class:"small-box-footer" do %>
+          See All <i class="fas fa-arrow-circle-right"></i>
+      <% end %>
     </div>
   </div>
 </div>
