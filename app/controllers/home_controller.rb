@@ -4,7 +4,4 @@ class HomeController < ApplicationController
     @departments = Department.all
     @floors = Floor.all
   end
-
-  def about
-  end
 end
