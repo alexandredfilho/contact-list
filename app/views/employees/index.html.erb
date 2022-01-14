@@ -48,14 +48,8 @@
                 <i class="fas fa-user"></i> View Profile
               <% end %>
               <% if user_signed_in? %>
-                <%= link_to edit_employee_path(employee),
-                  class:"btn btn-sm btn-info",
-                  style:"margin-bottom: 5px;",
-                  "data-bs-toggle":"tooltip",
-                  "data-bs-placement":"top",
-                  title:"Edit" do
-                %>
-                    <i class="fas fa-pen"></i> Edit Employee
+                <%= link_to edit_employee_path(employee), class:"btn btn-sm btn-info", style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Edit" do %>
+                  <i class="fas fa-pen"></i> Edit Employee
                 <% end %>
                 <%= link_to employee, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger", style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Delete"  do %>
                   <i class="fas fa-trash-alt"></i> Delete Employee
