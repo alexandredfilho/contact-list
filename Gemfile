@@ -15,6 +15,7 @@ gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+gem 'net-smtp', require: false
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
