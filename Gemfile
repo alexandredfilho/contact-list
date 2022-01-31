@@ -7,7 +7,6 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'bootsnap'
 gem 'devise'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
-gem 'pg', '~> 1.2', '>= 1.2.3', group: :production
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'bootstrap-sass'
@@ -35,6 +34,11 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'pg', '~> 1.2', '>= 1.2.3'
+  gem "aws-sdk-s3"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
