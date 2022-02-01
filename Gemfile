@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
+gem "aws-sdk-s3", require: false
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'bootsnap'
 gem 'devise'
@@ -38,7 +39,6 @@ end
 
 group :production do
   gem 'pg', '~> 1.2', '>= 1.2.3'
-  gem "aws-sdk-s3"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
