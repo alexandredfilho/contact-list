@@ -10,7 +10,7 @@
 
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+      <a class="nav-link" data-widget="navbar-search" href="#" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Search">
         <i class="fas fa-search"></i>
       </a>
       <div class="navbar-search-block">
@@ -18,10 +18,10 @@
           <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
+              <button class="btn btn-navbar" type="submit" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit Search">
                 <i class="fas fa-search"></i>
               </button>
-              <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+              <button class="btn btn-navbar" type="button" data-widget="navbar-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancel">
                 <i class="fas fa-times"></i>
               </button>
             </div>
@@ -31,17 +31,17 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Full Screen">
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
     </li>
     <li class="nav-item">
       <% if user_signed_in? %>
-        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Logout" do %>
           <i class="fas fa-sign-out-alt"></i>
         <% end %>
         <% else %>
-        <%= link_to new_user_session_path, class:"nav-link" do %>
+        <%= link_to new_user_session_path, class:"nav-link", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Sign In" do %>
           <i class="fas fa-sign-in-alt"></i>
           <% end %>
       <% end %>
