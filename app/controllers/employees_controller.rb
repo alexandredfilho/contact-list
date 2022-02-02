@@ -9,6 +9,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
+    @coworkers = @employee.department.employees.where.not(id:@employee.id)
   end
 
   # GET /employees/new
