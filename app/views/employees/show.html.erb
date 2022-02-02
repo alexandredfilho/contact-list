@@ -141,13 +141,13 @@
                           </div>
                           <div class="col-5 text-center">
                             <% if coworker.photo.attached? %>
-                              <%= image_tag coworker.photo.variant(resize_to_limit: [50, 50]).processed,
-                                  width: 50,
-                                  heigth: 50,
-                                  class:"img-circle img-fluid"
+                              <%= image_tag coworker.photo.variant(resize_to_limit: [70, 70]).processed,
+                                  width: 70,
+                                  heigth: 70,
+                                  class:"img-circle img-bordered-sm"
                               %>
                             <% else %>
-                              <%= image_tag ("avatar.jpg"), size:"50", class:"img-circle img-fluid" %>
+                              <%= image_tag ("avatar.jpg"), size:"70", class:"img-circle img-bordered-sm" %>
                             <% end %>
                           </div>
                         </div>
