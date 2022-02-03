@@ -1,17 +1,22 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <a class="brand-link">
-    <span class="brand-text font-weight-light">Contact List v1</span>
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed">
+  <a class="brand-link" style="text-decoration: none">
+    <span class="brand-text font-weight-light" style="text-decoration: none">Contact List v1</span>
   </a>
 
   <div class="sidebar">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
+      <% if current_user %>
+        <%= image_tag (current_user.photo_thumbnail), class:"img-circle elevation-2", alt:"User Avatar" %>
+      <% else %>
         <%= image_tag ("avatar.jpg"), size:"90", class:"img-circle elevation-2", alt:"User Avatar" %>
+      <% end %>
       </div>
       <div class="info">
-        <a href="#" class="d-block">
+        <a class="d-block" style="text-decoration: none">
           <% if user_signed_in? %>
-            <%= current_user.email %>
+            Welcome
+            <%= link_to current_user.email, edit_user_registration_path %>
             <% else %>
             Welcome!!
           <% end %>
