@@ -1,7 +1,4 @@
 <h1 align="center">
-  <img src="./app/assets/images/contact_list_v1.png" alt="Sparck Logo" width="180">
-  </br>
-  </br>
   <strong>Contact</strong> List v1
 </h1>
 
