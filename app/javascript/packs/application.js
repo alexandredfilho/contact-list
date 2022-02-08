@@ -8,6 +8,7 @@ require('admin-lte');
 import "popper.js/dist/popper"
 import "../stylesheets/application";
 import "@fortawesome/fontawesome-free/js/all";
+global.toastr = require("toastr")
 
 
 Rails.start()
