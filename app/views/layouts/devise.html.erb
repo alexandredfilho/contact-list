@@ -17,10 +17,15 @@
 
   <body class="login-page" style="min-height: 466px;">
     <div class="login-box">
-      <% if notice %>
-        <%= render 'layouts/alerts' %>
-      <% end %>
       <%= yield %>
     </div>
   </body>
+  <% if flash.any? %>
+    <script type="text/javascript">
+      <% flash.each do |key, value| %>
+        <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+        toastr.<%= type %>('<%= value %>')
+      <% end %>
+    </script>
+  <% end %>
 </html>
