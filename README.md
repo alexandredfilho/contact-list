@@ -15,6 +15,8 @@ This project was developed for [Alexandre Domingos Filho](https://github.com/ale
 -  [Ruby@3.1.0](https://www.ruby-lang.org/en/)
 -  [Rails@6.1.4](https://rubyonrails.org/)
 -  [PostgreSQL@1.2.3](https://www.postgresql.org/)
+-  [Bootstrap@5.1.3](https://getbootstrap.com)
+-  [FontAwesome-Free@5.15.4](https://fontawesome.com)
 
 ## Pre-requirements
 
@@ -31,16 +33,20 @@ Clone this repository on your local machine using the git command:
 
 > git clone
 
-Install all necessary gems:
+Install all backend gems:
 
 > bundle install
 
-Now it's time to prepare your local database, so you need to run rails commands:
+Install all frontend dependencies:
+
+> bundle install
+
+Now it's time to prepare your local database, so run the rails commands:
 
 > rails db:create db:migrate db:seed
 
 </hr>
 
-Congratulations, the app is ready to use for everything you need! :tada:
+Congratulations, the app is ready to use! :tada:
 
 </hr>
