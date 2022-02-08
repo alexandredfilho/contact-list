@@ -27,7 +27,9 @@ Take a look at your operational system installation steps:
 -  [Yarn Install](https://yarnpkg.com/getting-started/install)
 -  [PostgreSQL Install](https://www.postgresql.org/download/)
 
-To start working with this project is very simple, you just need: Open your terminal or console tab and enter the commands below, respectively:
+To start working with this project is very simple, you just need:
+
+<code> _Open your terminal or console tab and enter the commands below, respectively:_</code>
 
 Clone this repository on your local machine using the git command:
 
@@ -39,7 +41,7 @@ Install all backend gems:
 
 Install all frontend dependencies:
 
-> bundle install
+> yarn install
 
 Now it's time to prepare your local database, so run the rails commands:
 
