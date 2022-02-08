@@ -56,12 +56,5 @@
       </footer>
     </div>
   </body>
-  <% if flash.any? %>
-    <script type="text/javascript">
-      <% flash.each do |key, value| %>
-        <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
-        toastr.<%= type %>('<%= value %>')
-      <% end %>
-    </script>
-  <% end %>
+  <%= render 'layouts/application_alerts' %>
 </html>
