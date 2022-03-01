@@ -33,7 +33,12 @@
 
   <div class="field mb-3">
     <%= form.label :Role %>
-    <%= form.collection_select :roles, Employee.roles.map{ |role| [role.first, role.first] }, :first, :second, {}, {class: "custom-select rounded-0"} %>
+    <%= form.collection_select :roles, Employee.roles.map{ |role| [role.first, role.first] }, :first, :second, { include_blank: true }, {class: "custom-select rounded-0"} %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :Manager %>
+    <%= form.select :manager_id, Employee.manager.collect{ |m| [m.first_name, m.id] }, { include_blank: true }, {class: "custom-select rounded-0"} %>
   </div>
 
   <div class="form-floating mb-3">
@@ -46,9 +51,14 @@
     <%= form.label :last_name, for:"floatingInputLastName" %>
   </div>
 
-    <div class="form-floating mb-3">
-    <%= form.text_field :company, class:"form-control", id:"floatingInputCompany", placeholder:"Ups" %>
+  <div class="form-floating mb-3">
+    <%= form.text_field :company, class:"form-control", id:"floatingInputCompany", placeholder:"Marvel" %>
     <%= form.label :company, for:"floatingInputCompany" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :title, class:"form-control", id:"floatingInputTitle", placeholder:"Ruby on Rails Developer" %>
+    <%= form.label :title, for:"floatingInputTitle" %>
   </div>
 
   <div class="form-floating mb-3">
