@@ -6,6 +6,8 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
       t.string :company
       t.string :email
       t.string :phone
+      t.string :title
+      t.references :manager, foreign_key: { to_table: :employees }
 
       t.timestamps
     end

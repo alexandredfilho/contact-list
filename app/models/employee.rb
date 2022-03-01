@@ -1,6 +1,8 @@
 class Employee < ApplicationRecord
   belongs_to :department
   has_one_attached :photo
+  has_many :subordinates, class_name: "Employee", foreign_key: "manager_id"
+  belongs_to :manager, class_name: "Employee", optional: true
 
   def thumbnail
     return self.photo.variant(resize: '90x90!').processed
