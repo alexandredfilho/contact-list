@@ -15,7 +15,7 @@
         <div class="card card-widget widget-user">
           <div class="widget-user-header bg-info">
             <h3 class="widget-user-username"><%= employee.first_name %> <%= employee.last_name %></h3>
-            <h5 class="widget-user-desc"><%= employee.roles %></h5>
+            <h5 class="widget-user-desc"><%= employee.title %></h5>
           </div>
           <div class="widget-user-image">
             <% if employee.photo.attached? %>
