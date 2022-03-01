@@ -54,11 +54,14 @@ ActiveRecord::Schema.define(version: 2022_01_13_021734) do
     t.string "company"
     t.string "email"
     t.string "phone"
+    t.string "title"
+    t.integer "manager_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "department_id", null: false
     t.integer "roles"
     t.index ["department_id"], name: "index_employees_on_department_id"
+    t.index ["manager_id"], name: "index_employees_on_manager_id"
   end
 
   create_table "floors", force: :cascade do |t|
@@ -83,4 +86,5 @@ ActiveRecord::Schema.define(version: 2022_01_13_021734) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "departments", "floors"
   add_foreign_key "employees", "departments"
+  add_foreign_key "employees", "employees", column: "manager_id"
 end
