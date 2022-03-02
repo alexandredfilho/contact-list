@@ -19,4 +19,7 @@ class Employee < ApplicationRecord
   scope :coordinator, -> { where(roles: 'Coordinator') }
   scope :supervisor,  -> { where(roles: 'Supervisor') }
   scope :manager,     -> { where(roles: 'Manager') }
+
+  paginates_per 3
+
 end
