@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+gem 'kaminari'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
