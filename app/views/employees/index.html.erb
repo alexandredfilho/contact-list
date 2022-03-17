@@ -18,11 +18,9 @@
             <h5 class="widget-user-desc"><%= employee.title %></h5>
           </div>
           <div class="widget-user-image">
-            <% if employee.photo.attached? %>
-              <%= image_tag employee.thumbnail, class:"img-circle elevation-2", alt:"User Avatar" %>
-            <% else %>
-              <%= image_tag ("avatar.jpg"), size:"90", class:"img-circle elevation-2", alt:"User Avatar" %>
-            <% end %>
+            <%= image_tag employee.photo_thumbnail,
+              class:"img-circle elevation-2", alt:"User Avatar"
+            %>
           </div>
           <div class="card-footer">
             <div class="row">

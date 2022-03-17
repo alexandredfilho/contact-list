@@ -16,13 +16,9 @@
         <div class="card card-primary card-outline">
           <div class="card-body box-profile">
             <div class="text-center">
-              <% if @employee.photo.attached? %>
-                <%= image_tag @employee.thumbnail,
+                <%= image_tag @employee.photo_thumbnail,
                     class:"profile-user-img img-fluid img-circle"
                 %>
-              <% else %>
-                <%= image_tag ("avatar.jpg"), size:"90", class:"profile-user-img img-fluid img-circle" %>
-              <% end %>
             </div>
 
             <h3 class="profile-username text-center"><%= @employee.first_name %> <%= @employee.last_name %></h3>
@@ -81,15 +77,9 @@
               <div class="active tab-pane" id="manager">
                 <div class="post">
                   <div class="user-block">
-                      <% if @employee.manager.nil? %>
-                        <%= image_tag ("avatar.jpg"), size:"90", class:"img-circle img-bordered-sm" %>
-                      <% else %>
-                        <%= image_tag @employee.manager.photo.variant(resize_to_limit: [90, 90]).processed,
-                            width: 90,
-                            heigth: 90,
-                            class:"img-circle img-bordered-sm"
-                        %>
-                      <% end %>
+                      <%= image_tag @employee.manager_photo,
+                        class:"img-circle img-bordered-sm"
+                      %>
                     <span class="username">
                       <% if @employee.manager.nil? %>
                         <a>Employee does not have a manager!</a>
@@ -140,7 +130,7 @@
                         <div class="row">
                           <div class="col-7">
                             <h2 class="lead"><b><%= coworker.first_name %> <%= coworker.last_name %></b></h2>
-                            <p class="text-muted text-sm"><b>About: </b> <%= coworker.roles %></p>
+                            <p class="text-muted text-sm"><b>About: </b> <%= coworker.roles.capitalize %></p>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                               <li class="small mb-2"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <%= coworker.company %></li>
                               <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <%= coworker.phone %></li>
