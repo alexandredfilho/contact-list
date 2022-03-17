@@ -21,9 +21,9 @@
   </div>
 
   <div class="mb-3">
-    <% if employee.photo.attached? %>
-      <%= image_tag employee.thumbnail %>
-    <% end %>
+    <%= image_tag employee.photo_thumbnail,
+      class:"img-circle img-bordered-sm"
+    %>
   </div>
 
   <div class="mb-3">
@@ -33,7 +33,7 @@
 
   <div class="field mb-3">
     <%= form.label :Role %>
-    <%= form.collection_select :roles, Employee.roles.map{ |role| [role.first, role.first] }, :first, :second, { include_blank: true }, {class: "custom-select rounded-0"} %>
+    <%= form.collection_select :roles, Employee.roles.map{ |role| [role.first, role.first.capitalize] }, :first, :second, { include_blank: true }, {class: "custom-select rounded-0"} %>
   </div>
 
   <div class="field mb-3">
