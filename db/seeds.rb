@@ -1,7 +1,12 @@
-User.create!(
-    email: "teste@teste.com",
-    password: "12345678"
-  )
+user = User.create!(
+      email: "teste@teste.com",
+      password: "12345678"
+    )
+
+user.photo.attach(
+  io: File.open('app/assets/images/avatar.jpg'),
+  filename: 'avatar.jpg'
+)
 
 Floor.create!([
   {
@@ -23,7 +28,7 @@ Department.create!([
   }
 ])
 
-Employee.create!([
+employees = Employee.create([
   {
     first_name: "Alexandre",
     last_name: "Domingos",
@@ -32,7 +37,7 @@ Employee.create!([
     email: "alex@test.com",
     phone: "123456789",
     department_id: 1,
-    roles: "Manager"
+    roles: "manager"
   },
   {
     first_name: "John",
@@ -42,7 +47,7 @@ Employee.create!([
     email: "john.doe@jdcorp.com",
     phone: "87654321",
     department_id: 2,
-    roles: "Employee"
+    roles: "employee"
   },
   {
     first_name: "Stwart",
@@ -52,6 +57,13 @@ Employee.create!([
     phone: "12345689",
     title: "CIO",
     department_id: 1,
-    roles: "Manager"
+    roles: "employee"
   }
 ])
+
+employees.each do |i|
+  i.photo.attach(
+    io: File.open('app/assets/images/avatar.jpg'),
+    filename: 'avatar.jpg'
+  )
+end
