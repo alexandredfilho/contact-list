@@ -8,8 +8,9 @@ class User < ApplicationRecord
   after_commit :add_default_photo, on: %i[create update]
 
   def photo_thumbnail
+    photo = self.photo
     if photo.attached?
-      photo.variant(resize: '90x90!').processed
+      photo.variant(resize: "90x90!").processed
     else
       "avatar.jpg"
     end

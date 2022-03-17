@@ -11,11 +11,9 @@
           <%= render "devise/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
           <div class="input-group mb-3 justify-content-center">
-              <% if resource.photo.attached? %>
-                <%= image_tag resource.photo_thumbnail, class:"img-circle img-bordered-sm justify-content" %>
-              <% else %>
-                <%= image_tag ("avatar.jpg"), size:"100", class:"img-circle img-bordered-sm justify-content" %>
-              <% end %>
+            <%= image_tag resource.photo_thumbnail,
+              class:"img-circle img-bordered-sm justify-content"
+            %>
           </div>
           <div class="input-group mb-3">
             <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"New Password" %>

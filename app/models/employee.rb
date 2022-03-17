@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
     if photo.attached?
       photo.variant(resize: "90x90!").processed
     else
-      image_tag ("avatar.jpg"), size:"90"
+      "avatar.jpg"
     end
   end
 

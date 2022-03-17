@@ -9,11 +9,7 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="input-group mb-3 justify-content-center">
-              <% if resource.photo.attached? %>
-                <%= image_tag resource.photo, size:"90", class:"img-circle img-bordered-sm justify-content" %>
-              <% else %>
-                <%= image_tag ("avatar.jpg"), size:"100", class:"img-circle img-bordered-sm justify-content" %>
-              <% end %>
+            <%= image_tag resource.photo_thumbnail, size:"90", class:"img-circle img-bordered-sm justify-content" %>
           </div>
           <div class="custom-file mb-3">
             <%= f.file_field :photo, class:"custom-file-input", id:"exampleInputFile" %>
