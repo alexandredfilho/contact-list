@@ -30,34 +30,37 @@ Department.create!([
 
 employees = Employee.create([
   {
+    roles: "manager",
+    department_id: 1,
+    date_of_birth: '1991-05-17',
     first_name: "Alexandre",
     last_name: "Domingos",
     company: "Alex Inc.",
     title: "Ruby on Rails Developer",
     email: "alex@test.com",
-    phone: "123456789",
-    department_id: 1,
-    roles: "manager"
+    phone: "123456789"
   },
   {
+    roles: "employee",
+    department_id: 2,
+    date_of_birth: '1994-09-27',
     first_name: "John",
     last_name: "Doe",
     company: "JD Corp.",
     title: "React Js Developer",
     email: "john.doe@jdcorp.com",
-    phone: "87654321",
-    department_id: 2,
-    roles: "employee"
+    phone: "87654321"
   },
   {
+    roles: "employee",
+    department_id: 1,
+    date_of_birth: '2003-07-27',
     first_name: "Stwart",
     last_name: "Minion",
     company: "Minons Inc.",
-    email: "stwart@minions.com",
-    phone: "12345689",
     title: "CIO",
-    department_id: 1,
-    roles: "employee"
+    email: "stwart@minions.com",
+    phone: "12345689"
   }
 ])
 
