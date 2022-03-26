@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_021734) do
     t.string "email"
     t.string "phone"
     t.string "title"
+    t.date "date_of_birth"
     t.integer "manager_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
