@@ -19,61 +19,77 @@
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <%= image_tag employee.photo_thumbnail,
+          size:"90",
+          class:"img-circle img-bordered-sm"
+        %>
+      </div>
 
-  <div class="mb-3">
-    <%= image_tag employee.photo_thumbnail,
-      size:"90",
-      class:"img-circle img-bordered-sm"
-    %>
-  </div>
+      <div class="row mb-3">
+        <div class="col-sm-4">
+          <%= form.label :photo, for:"formFile", class:"form-label", placeholder:"Profile Photo" %>
+          <%= form.file_field :photo, class:"form-control", id:"formFile" %>
+        </div>
 
-  <div class="mb-3">
-    <%= form.label :photo, for:"formFile", class:"form-label", placeholder:"Profile Photo" %>
-    <%= form.file_field :photo, class:"form-control", id:"formFile" %>
-  </div>
+        <div class="col-sm-2">
+          <%= form.label :Role %>
+          <%= form.collection_select :roles, Employee.roles.map{ |role| [role.first, role.first.capitalize] }, :first, :second, { include_blank: true }, {class: "custom-select rounded-0"} %>
+        </div>
 
-  <div class="field mb-3">
-    <%= form.label :Role %>
-    <%= form.collection_select :roles, Employee.roles.map{ |role| [role.first, role.first.capitalize] }, :first, :second, { include_blank: true }, {class: "custom-select rounded-0"} %>
-  </div>
+        <div class="col-sm-4">
+          <%= form.label :Manager %>
+          <%= form.select :manager_id, Employee.manager.collect{ |m| [m.first_name + ' ' + m.last_name, m.id] }, { include_blank: true }, {class: "custom-select rounded-0"} %>
+        </div>
 
-  <div class="field mb-3">
-    <%= form.label :Manager %>
-    <%= form.select :manager_id, Employee.manager.collect{ |m| [m.first_name, m.id] }, { include_blank: true }, {class: "custom-select rounded-0"} %>
-  </div>
+        <div class="col-sm-2">
+          <%= form.label :Department %>
+          <%= form.select :department_id, options_for_select(Department.order(:description).pluck(:description, :id)), {}, {class: "custom-select rounded-0"} %>
+        </div>
+      </div>
 
-  <div class="form-floating mb-3">
-    <%= form.text_field :first_name, class:"form-control", id:"floatingInputFirsName", placeholder:"John" %>
-    <%= form.label :first_name, for:"floatingInputFirsName" %>
-  </div>
+      <div class="row mb-3">
+        <div class="col-sm-2">
+          <%= form.label :date_of_birth %>
+          <%= form.date_field :date_of_birth, class:"form-control datetimepicker-input", "data-target":"#dateOfBirth" %>
+        </div>
 
-  <div class="form-floating mb-3">
-    <%= form.text_field :last_name, class:"form-control", id:"floatingInputLastName", placeholder:"Doe" %>
-    <%= form.label :last_name, for:"floatingInputLastName" %>
-  </div>
+        <div class="col-sm-4">
+          <%= form.label :first_name, for:"floatingInputFirsName" %>
+          <%= form.text_field :first_name, class:"form-control", id:"floatingInputFirsName", placeholder:"John" %>
+        </div>
 
-  <div class="form-floating mb-3">
-    <%= form.text_field :company, class:"form-control", id:"floatingInputCompany", placeholder:"Marvel" %>
-    <%= form.label :company, for:"floatingInputCompany" %>
-  </div>
+        <div class="col-sm-6">
+          <%= form.label :last_name, for:"floatingInputLastName" %>
+          <%= form.text_field :last_name, class:"form-control", id:"floatingInputLastName", placeholder:"Doe" %>
+        </div>
+      </div>
 
-  <div class="form-floating mb-3">
-    <%= form.text_field :title, class:"form-control", id:"floatingInputTitle", placeholder:"Ruby on Rails Developer" %>
-    <%= form.label :title, for:"floatingInputTitle" %>
-  </div>
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <%= form.label :company, for:"floatingInputCompany" %>
+          <%= form.text_field :company, class:"form-control", id:"floatingInputCompany", placeholder:"Marvel" %>
+        </div>
 
-  <div class="form-floating mb-3">
-    <%= form.text_field :email, class:"form-control", id:"floatingInputEmail", placeholder:"johndoe@email.com" %>
-    <%= form.label :email, for:"floatingInputEmail" %>
-  </div>
+        <div class="col-sm-6">
+          <%= form.label :title, for:"floatingInputTitle" %>
+          <%= form.text_field :title, class:"form-control", id:"floatingInputTitle", placeholder:"Ruby on Rails Developer" %>
+        </div>
+      </div>
 
-  <div class="form-floating mb-3">
-    <%= form.text_field :phone, class:"form-control", id:"floatingInputPhone", placeholder:"00000-0000" %>
-    <%= form.label :phone, for:"floatingInputPhone" %>
-  </div>
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <%= form.label :email, for:"floatingInputEmail" %>
+          <%= form.text_field :email, class:"form-control", id:"floatingInputEmail", placeholder:"johndoe@email.com" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :Department %>
-    <%= form.select :department_id, options_for_select(Department.order(:description).pluck(:description, :id)), {}, {class: "custom-select rounded-0"} %>
+        <div class="col-sm-6">
+          <%= form.label :phone, for:"floatingInputPhone" %>
+          <%= form.text_field :phone, class:"form-control", id:"floatingInputPhone", placeholder:"00000-0000" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
