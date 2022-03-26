@@ -71,7 +71,7 @@ class EmployeesController < ApplicationController
         :roles, :photo, :first_name,
         :last_name, :company, :title,
         :email, :phone, :department_id,
-        :manager_id
+        :date_of_birth, :manager_id
       )
     end
 end
