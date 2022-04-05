@@ -10,8 +10,9 @@ class Employee < ApplicationRecord
   end
 
   def self.upcoming_birthdays
-   # Employee.where("extract(month from date_of_birth) = ? AND extract(day from date_of_birth) = ?", Date.today.strftime('%m'), Date.today.strftime('%d'))
-    Employee.where(date_of_birth: Date.today..14.days.from_now)
+    return true
+    #Employee.where(date_of_birth: Date.today..14.days.from_now)
+    # Employee.where("extract(month from date_of_birth) = ? AND extract(day from date_of_birth) = ?", Date.today.strftime('%m'), Date.today.strftime('%d'))
 
     # Employee.where("
     #    date_of_birth + INTERVAL '1 year' * (DATE_PART('year', CURRENT_DATE)::integer - DATE_PART('year', date_of_birth)::integer) BETWEEN :start_date AND :end_date
