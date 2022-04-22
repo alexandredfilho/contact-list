@@ -1,58 +1,49 @@
-<div class="card">
-  <div class="card-header ui-sortable-handle">
-    <h5 class="card-title">Dashboard</h5>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-lg-3 col-6">
-        <!-- small card -->
-        <div class="small-box bg-info">
-          <div class="inner">
-            <h3><%= @floors.length%></h3>
+<div class="container-fluid">
+  <h3 class="mb-3">Dashboard</h3>
+  <div class="row">
+    <div class="col-lg-3 col-6">
 
-            <p>Floors</p>
-          </div>
-          <div class="icon">
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-          <%= link_to floors_path, class:"small-box-footer", "data-bs-toggle":"tooltip", "data-bs-placement":"top", "title":"See All Floors" do %>
-              See All <i class="fas fa-arrow-circle-right"></i>
-          <% end %>
+      <div class="small-box bg-lightblue">
+        <div class="inner">
+          <h3><%= @floors.length%></h3>
+          <p>Floors</p>
         </div>
+        <div class="icon">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <%= link_to floors_path, class:"small-box-footer", "data-bs-toggle":"tooltip", "data-bs-placement":"top", "title":"See All Floors" do %>
+            See All <i class="fas fa-arrow-circle-right"></i>
+        <% end %>
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small card -->
-        <div class="small-box bg-success">
-          <div class="inner">
-            <h3><%= @departments.length %></h3>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3><%= @departments.length %></h3>
 
-            <p>Departments</p>
-          </div>
-          <div class="icon">
-            <i class="fas fa-th"></i>
-          </div>
-          <%= link_to departments_path, class:"small-box-footer", "data-bs-toggle":"tooltip", "data-bs-placement":"top", "title":"See All Departments" do %>
-              See All <i class="fas fa-arrow-circle-right"></i>
-          <% end %>
+          <p>Departments</p>
         </div>
+        <div class="icon">
+          <i class="fas fa-th"></i>
+        </div>
+        <%= link_to departments_path, class:"small-box-footer", "data-bs-toggle":"tooltip", "data-bs-placement":"top", "title":"See All Departments" do %>
+            See All <i class="fas fa-arrow-circle-right"></i>
+        <% end %>
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small card -->
-        <div class="small-box bg-warning">
-          <div class="inner">
-            <h3><%= @employees.length %></h3>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3><%= @employees.length %></h3>
 
-            <p>Employees</p>
-          </div>
-          <div class="icon">
-            <i class="fas fa-user"></i>
-          </div>
-          <%= link_to employees_path, class:"small-box-footer", "data-bs-toggle":"tooltip", "data-bs-placement":"top", "title":"See All Employees" do %>
-              See All <i class="fas fa-arrow-circle-right"></i>
-          <% end %>
+          <p>Employees</p>
         </div>
+        <div class="icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <%= link_to employees_path, class:"small-box-footer", "data-bs-toggle":"tooltip", "data-bs-placement":"top", "title":"See All Employees" do %>
+            See All <i class="fas fa-arrow-circle-right"></i>
+        <% end %>
       </div>
     </div>
   </div>
