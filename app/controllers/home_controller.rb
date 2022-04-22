@@ -5,6 +5,6 @@ class HomeController < ApplicationController
     @floors = Floor.all
 
     @todays_birthdays = Employee.todays_birthdays.sort
-    @upcoming_birthdays = Employee.upcoming_birthdays
+    @upcoming_birthdays = Employee.upcoming_birthdays.order('date_of_birth ASC')
   end
 end
