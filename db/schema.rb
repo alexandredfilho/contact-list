@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_01_13_021734) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_021734) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_021734) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "floor_id", null: false
+    t.bigint "floor_id", null: false
     t.index ["floor_id"], name: "index_departments_on_floor_id"
   end
 
@@ -56,10 +59,10 @@ ActiveRecord::Schema.define(version: 2022_01_13_021734) do
     t.string "phone"
     t.string "title"
     t.date "date_of_birth"
-    t.integer "manager_id"
+    t.bigint "manager_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "department_id", null: false
+    t.bigint "department_id", null: false
     t.integer "roles"
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["manager_id"], name: "index_employees_on_manager_id"
