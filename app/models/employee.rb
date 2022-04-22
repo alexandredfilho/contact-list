@@ -6,18 +6,12 @@ class Employee < ApplicationRecord
   after_commit :default_photo, on: %i[create update]
 
   def self.todays_birthdays
-    Employee.where("strftime('%m%d', date_of_birth) = ?", Date.today.strftime('%m%d'))
+    coming_up(:date_of_birth)
   end
 
   def self.upcoming_birthdays
     #Employee.where("strftime('%m%d', date_of_birth) = ?", Date.today.strftime('%m%d'))
     coming_up(:date_of_birth, days: 14)
-  end
-
-  def employees_with_avatars(employees)
-    employees.map do |employee|
-      employee.as_json.merge(avatar: { url: employee.photo })
-    end
   end
 
   def photo_thumbnail
@@ -82,15 +76,15 @@ class Employee < ApplicationRecord
     SQL
 
     ::Employee
-      .where(employee_id: @employee.id)
-      .not_deleted
+      .where(id: Employee.ids)
       .select(:id)
       .select("#{date_in_current_year} AS #{date_field}")
       .select(:first_name)
       .select(:last_name)
+      .select(:title)
       .select("(EXTRACT(YEAR from CURRENT_DATE) - EXTRACT(YEAR from #{date_field})) :: int AS will_be")
       .where("#{date_in_current_year} BETWEEN CURRENT_DATE AND (CURRENT_DATE + '#{days} days' :: interval)")
       .where("(EXTRACT(YEAR from CURRENT_DATE) - EXTRACT(YEAR from #{date_field})) :: int BETWEEN 1 AND 150")
-      .order(date_in_current_year, :first_name, :last_name)
+      #.order(date_in_current_year, :first_name, :last_name)
   end
 end
