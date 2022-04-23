@@ -4,7 +4,7 @@
       <% if user_signed_in? %>
         <%= link_to 'Edit', edit_employee_path(@employee),class:"btn btn-success text-white" %>
       <% end %>
-        <%= link_to 'Go Back', employees_path, class:"btn btn-outline-primary text-primary" %>
+        <%= link_to 'Go Back', employees_path, class:"btn btn-outline-dark" %>
     </div>
   </div>
 </div>
@@ -13,7 +13,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <div class="card card-primary card-outline">
+        <div class="card card-lightblue card-outline">
           <div class="card-body box-profile">
             <div class="text-center">
                 <%= image_tag @employee.photo_thumbnail,
@@ -40,27 +40,23 @@
               </li>
             </ul>
 
-            <%= mail_to @employee.email, class:"btn btn-primary btn-block" , style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Delete"  do %>
+            <%= mail_to @employee.email, class:"btn btn-success btn-block" , style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Delete"  do %>
               <i class="fas fa-envelope mr-1"></i>Contact User
             <% end %>
           </div>
         </div>
 
-        <div class="card card-primary">
+        <div class="card card-lightblue">
           <div class="card-header">
             <h3 class="card-title">About Me</h3>
           </div>
           <div class="card-body">
             <strong><i class="fas fa-bullseye mr-1"></i></i>Department</strong>
-
             <p class="text-muted">
               <%= @employee.department.description %>
             </p>
-
             <hr>
-
             <strong><i class="fas fa-map-marker-alt mr-1"></i>Floor</strong>
-
             <p class="text-muted">
               <%= @employee.department.floor.description %>
             </p>
@@ -70,11 +66,6 @@
 
       <div class="col-md-9">
         <div class="card">
-          <div class="card-header p-2">
-            <ul class="nav nav-pills">
-              <li class="nav-item"><a class="nav-link active" data-toggle="tab">Manager</a></li>
-            </ul>
-          </div>
           <div class="card-body">
             <div class="tab-content">
               <div class="active tab-pane" id="manager">
@@ -94,12 +85,9 @@
                       </span>
                     <% end %>
                     <% unless @employee.manager.nil? %>
-                      <span class="description"><%= @employee.manager.roles %></span>
+                      <span class="description"><%= @employee.manager.roles.capitalize %></span>
                     <% end %>
                   </div>
-                  <p>
-
-                  </p>
                 </div>
               </div>
             </div>
@@ -142,7 +130,7 @@
                       </div>
                       <div class="card-footer">
                         <div class="text-right">
-                          <%= link_to employee_path(coworker.id), class:"btn btn-sm btn-primary" do %>
+                          <%= link_to employee_path(coworker.id), class:"btn btn-sm btn-success" do %>
                             <i class="fas fa-user"></i>
                               View Profile
                           <% end %>
