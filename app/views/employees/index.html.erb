@@ -1,70 +1,103 @@
-<div class="card-header">
-  <h3 class="card-title"></h3>
-  <div class="card-tools">
-    <a href="#" class="btn btn-tool btn-sm">
-      <i class="fas fa-download"></i>
-    </a>
-  </div>
-</div>
-<div class="row mb-3 mt-3">
-  <% if user_signed_in? %>
-    <div class="col-sm-12">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <%= link_to 'New Employee', new_employee_path, class:"btn btn-primary text-white me-md-2 rounded-pill border border-light" %>
+<div class="container-fluid">
+  <div class="row mb-3 mt-3">
+    <% if user_signed_in? %>
+      <div class="col-sm-12">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <%= link_to 'New Employee', new_employee_path, class:"btn btn-primary text-white me-md-2 rounded-pill border border-light" %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="album text-muted">
   <div class="row">
-    <% @employees.each do |employee| %>
-      <div class="col-md-4">
-        <div class="card card-widget widget-user">
-          <div class="widget-user-header bg-lightblue">
-            <h3 class="widget-user-username"><%= employee.first_name %> <%= employee.last_name %></h3>
-            <h5 class="widget-user-desc"><%= employee.title %></h5>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Employees</h3>
+          <div class="col-sm-12 col-md-6">
+            <div class="dt-buttons btn-group flex-wrap">
+              <a href="#" class="btn btn-tool btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Export">
+                <i class="fas fa-download"></i>
+              </a>
+            </div>
           </div>
-          <div class="widget-user-image">
-            <%= image_tag employee.photo_thumbnail,
-              class:"img-circle elevation-2", alt:"User Avatar"
-            %>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col-sm-4 border-right">
-                <div class="description-block">
-                  <h5 class="description-header"><%= employee.company %></h5>
-                  <span class="description-text">COMPANY</span>
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 250px;">
+              <%= search_form_for @q do |f| %>
+                <div class="input-group-append">
+                  <%= f.label 'Search:', class:"mr-2"%>
+                  <%= f.search_field :first_name_cont, class: "form-control form-control-sm float-right", placeholder: "John Doe" %>
+                  <% f.submit class: "btn btn-default" %>
                 </div>
-              </div>
-              <div class="col-sm-4 border-right">
-                <div class="description-block">
-                  <h5 class="description-header"><%= employee.department.description %></h5>
-                  <span class="description-text">DEPARTMENT</span>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="description-block">
-                  <h5 class="description-header"><%= employee.department.floor.description %></h5>
-                  <span class="description-text">FLOOR</span>
-                </div>
-              </div>
-              <%= link_to employee, class:"btn btn-sm btn-primary", style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"View" do %>
-                <i class="fas fa-user"></i> View Profile
-              <% end %>
-              <% if user_signed_in? %>
-                <%= link_to edit_employee_path(employee), class:"btn btn-sm btn-info", style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Edit" do %>
-                  <i class="fas fa-pen"></i> Edit Employee
-                <% end %>
-                <%= link_to employee, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger", style:"margin-bottom: 5px;", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Delete"  do %>
-                  <i class="fas fa-trash-alt"></i> Delete Employee
-                <% end %>
               <% end %>
             </div>
           </div>
         </div>
+
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Date of Birth</th>
+                <th>Company</th>
+                <th>Department</th>
+                <th>Floor</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @employees.each do |employee| %>
+                <tr>
+                  <td><%= employee.first_name %> <%= employee.last_name %></td>
+                  <td><%= employee.title %></td>
+                  <td><%= employee.date_of_birth %></td>
+                  <td><%= employee.company %></td>
+                  <td><%= employee.department.description %></td>
+                  <td><%= employee.department.floor.description %></td>
+                  <td>
+                    <%= link_to employee,
+                      class:"btn btn-sm btn-primary",
+                      style:"margin-bottom: 5px;",
+                      "data-bs-toggle":"tooltip",
+                      "data-bs-placement":"top",
+                      title:"View" do %>
+                        <i class="fas fa-user"></i>
+                      <% end %>
+                    <% if user_signed_in? %>
+                      <%= link_to edit_employee_path(employee),
+                        class:"btn btn-sm btn-info",
+                        style:"margin-bottom: 5px;",
+                        "data-bs-toggle":"tooltip",
+                        "data-bs-placement":"top",
+                        title:"Edit" do %>
+                          <i class="fas fa-pen"></i>
+                        <% end %>
+                      <%= link_to employee,
+                        method: :delete, data: { confirm: 'Are you sure?' },
+                        class:"btn btn-sm btn-danger",
+                        style:"margin-bottom: 5px;",
+                        "data-bs-toggle":"tooltip",
+                        "data-bs-placement":"top",
+                        title:"Delete" do %>
+                          <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    <% end %>
+      <div class="row">
+        <div class="col-sm-12 col-md-7">
+          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+            <%= paginate @employees %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
