@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :export]
   before_action :set_employee, only: %i[ show edit update destroy ]
 
   # GET /employees or /employees.json
@@ -8,9 +8,25 @@ class EmployeesController < ApplicationController
     @employees = @q.result.page(params[:page]).per(10)
   end
 
+  def export
+    @employees = Employee.all
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "Contacts: #{@employees.count}",
+        page_size: 'A4',
+        layout: "exports/contacts_layout.pdf.erb",
+        template: "exports/contacts.html.erb",
+        orientation: "landscape",
+        lowquality: true,
+        dpi: 96
+      end
+    end
+  end
+
   # GET /employees/1 or /employees/1.json
   def show
-    @coworkers = @employee.department.employees.where.not(id:@employee.id)
+    @coworkers = @employee.department.employees.where.not(id: @employee.id)
                           .order(:first_name).page(params[:page])
   end
 
