@@ -16,8 +16,9 @@
           <h3 class="card-title">Employees</h3>
           <div class="col-sm-12 col-md-6">
             <div class="dt-buttons btn-group flex-wrap">
-              <a href="#" class="btn btn-tool btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Export">
+              <%= link_to export_contacts_path(format: 'pdf'), class:"btn btn-tool btn-sm", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Export" do =%>
                 <i class="fas fa-download"></i>
+              <% end %>
               </a>
             </div>
           </div>
