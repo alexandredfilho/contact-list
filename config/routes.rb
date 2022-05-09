@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :employees
   root 'home#index'
+
+  get "export_contacts", to: "employees#export"
 end
