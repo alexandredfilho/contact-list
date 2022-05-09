@@ -3,7 +3,7 @@
     <li class="nav-item">
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
+    <span class="nav-item d-none d-sm-inline-block">
       <%= link_to "Home", root_path, class:"nav-link" %>
     </li>
   </ul>
@@ -35,16 +35,40 @@
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
     </li>
-    <li class="nav-item">
-      <% if user_signed_in? %>
-        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Logout" do %>
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
+    <li class="nav-item ml-2">
+      <div class="image">
+        <% if current_user %>
+          <%= image_tag (current_user.photo.variant(resize: "50x50!").processed), class:"img-circle elevation-2", alt:"User Avatar", "data-widget": "control-sidebar", "data-slide": "true" %>
         <% else %>
-        <%= link_to new_user_session_path, class:"nav-link", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Sign In" do %>
-          <i class="fas fa-sign-in-alt"></i>
-          <% end %>
-      <% end %>
+          <%= image_tag ("avatar.jpg"), size:"50", class:"img-circle elevation-2", alt:"User Avatar", "data-widget": "control-sidebar", "data-slide": "true" %>
+        <% end %>
+      </div>
+      </a>
     </li>
   </ul>
 </nav>
+
+<aside class="control-sidebar control-sidebar-light" style="display: block;">
+  <div class="p-3 control-sidebar-content">
+    <div class="mb-4">
+      <a class="d-block mr-1" style="text-decoration: none; color: gray;">
+        <% if user_signed_in? %>
+          Welcome
+          <%= link_to current_user.email, edit_user_registration_path, style:"color: gray;" %>
+        <% else %>
+          Welcome!!
+        <% end %>
+      </a>
+    </div>
+    <hr class="mb-2">
+    <div class="mb-1">
+      <span class="mr-1" style="color: gray;>
+        <% if user_signed_in? %>
+          <%= link_to 'Logout',destroy_user_session_path, method: :delete, class:"nav-link", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Logout" %>
+        <% else %>
+          <%= link_to 'Sing In', new_user_session_path, class:"nav-link", "data-bs-toggle":"tooltip", "data-bs-placement":"top", title:"Sign In" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</aside>
