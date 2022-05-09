@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"></script>
+    <%= wicked_pdf_javascript_include_tag "chartkick" %>
+  </head>
+  <body>
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Date of Birth</th>
+            <th>Company</th>
+            <th>Department</th>
+            <th>Floor</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @employees.each do |employee| %>
+            <tr>
+              <td><%= employee.first_name %> <%= employee.last_name %></td>
+              <td><%= employee.title %></td>
+              <td><%= employee.date_of_birth %></td>
+              <td><%= employee.company %></td>
+              <td><%= employee.department.description %></td>
+              <td><%= employee.department.floor.description %></td>
+              <td>
+                <%= link_to employee,
+                  class:"btn btn-sm btn-primary",
+                  style:"margin-bottom: 5px;",
+                  "data-bs-toggle":"tooltip",
+                  "data-bs-placement":"top",
+                  title:"View" do %>
+                    <i class="fas fa-user"></i>
+                  <% end %>
+                <% if user_signed_in? %>
+                  <%= link_to edit_employee_path(employee),
+                    class:"btn btn-sm btn-info",
+                    style:"margin-bottom: 5px;",
+                    "data-bs-toggle":"tooltip",
+                    "data-bs-placement":"top",
+                    title:"Edit" do %>
+                      <i class="fas fa-pen"></i>
+                    <% end %>
+                  <%= link_to employee,
+                    method: :delete, data: { confirm: 'Are you sure?' },
+                    class:"btn btn-sm btn-danger",
+                    style:"margin-bottom: 5px;",
+                    "data-bs-toggle":"tooltip",
+                    "data-bs-placement":"top",
+                    title:"Delete" do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
